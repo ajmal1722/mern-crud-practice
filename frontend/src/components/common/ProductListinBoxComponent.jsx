@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductTitleBox from './ProductTitleBox'
 
 const ProductListinBoxComponent = () => {
     return (
-        <div>
-        
+        <div className='w-full m-5'>
+            <ProductTitleBox />
         </div>
     )
 }

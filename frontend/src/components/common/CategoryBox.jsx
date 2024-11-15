@@ -1,10 +1,11 @@
 import React from 'react'
+import ColourlessButton from '../reusable/ColourlessButton';
 
 const CategoryBox = () => {
     const categories = ['Extension', 'Mobile Phone Cases', 'Power Bank', 'Headsets', 'Charger And data cable'];
 
     return (
-        <div className='bg-white py-6 p-4 my-2 rounded-md lg:w-1/4'>
+        <div className='bg-white py-6 p-4 my-2 rounded-md lg:w-2/6 shadow-lg'>
             <h2 className='text-lg font-semibold my-3'>
                 Product Categories
             </h2>
@@ -16,7 +17,14 @@ const CategoryBox = () => {
                     { item }
                 </h4>
             ))}
-            <hr className='mt-6' />
+            <hr className='my-8 ' />
+            <h2 className='text-lg font-semibold my-3'>
+                Filter By Price
+            </h2>
+            <div className='flex gap-7'>
+                <ColourlessButton value={399} />
+                <ColourlessButton value={344} />
+            </div>
         </div>
     )
 }
