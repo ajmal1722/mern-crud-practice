@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { userSignUpApi } from '../../../utils/apis/userApi';
 
 const SignUpPage = () => {
     const [formData, setFormData] = useState({
@@ -20,10 +22,10 @@ const SignUpPage = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
     
-        const requiredFields = ['name', 'email', 'phone', 'password', 'profession'];
+        const requiredFields = ['name', 'email', 'password'];
     
         for (let field of requiredFields) {
             if (formData[field].trim() === '') {
@@ -32,20 +34,10 @@ const SignUpPage = () => {
             }
         }
     
-        // Get existing users from localStorage
-        const existingUsers = JSON.parse(localStorage.getItem('userData')) || [];
-    
-        // Add the new user to the array
-        const updatedUsers = [...existingUsers, formData];
-    
-        // Store the updated users array in localStorage
-        localStorage.setItem('userData', JSON.stringify(updatedUsers));
-    
-        // If no errors, proceed with form submission logic
-        console.log('User data:', formData);
-    
-        // Redirect to login page after successful sign-up
-        navigate('/login');
+        const response = await userSignUpApi(formData);
+        if (response) {
+            navigate('/')
+        }
     };    
     
     return (

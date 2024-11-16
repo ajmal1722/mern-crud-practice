@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
+dotenv.config()
 const { SECRET_KEY } = process.env;
 import User from "../models/userSchema.js";
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { userLoginApi } from '../../../utils/apis/userApi';
 
 const LoginPage = () => {
@@ -38,21 +39,10 @@ const LoginPage = () => {
                 return;
             }
         }
-
-        try {
-            const response = await userLoginApi(formData);
-            if (response && response.success) {
-                // Save user data to local storage
-                localStorage.setItem('userData', JSON.stringify(response.data));
-                toast.success('Login successful!');
-                navigate('/'); // Redirect to home page
-            } else {
-                setError(response?.message || 'Invalid credentials');
-                toast.error(response?.message || 'Invalid credentials');
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            toast.error('Something went wrong. Please try again.');
+        
+        const response = await userLoginApi(formData);
+        if (response) {
+            navigate('/')
         }
     };
 
