@@ -1,5 +1,6 @@
 import React from 'react'
 import ColourlessButton from '../reusable/ColourlessButton';
+import ColouredButton from '../reusable/ColouredButton';
 
 const CategoryBox = () => {
     const categories = ['Extension', 'Mobile Phone Cases', 'Power Bank', 'Headsets', 'Charger And data cable'];
@@ -24,6 +25,14 @@ const CategoryBox = () => {
             <div className='flex gap-7'>
                 <ColourlessButton value={399} />
                 <ColourlessButton value={344} />
+            </div>
+            <input 
+                type="range" 
+                className='my-6 w-full accent-purple-900'
+            />
+            <div className='flex gap-7'>
+                <ColourlessButton value={'Reset'} />
+                <ColouredButton value={344} />
             </div>
         </div>
     )
