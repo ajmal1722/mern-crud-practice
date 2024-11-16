@@ -4,7 +4,7 @@ import ProductListinBoxComponent from '../../common/ProductListinBoxComponent';
 
 const HomePage = () => {
     return (
-        <div className='lg:px-20 flex'>
+        <div className='lg:px-20 md:flex bg-gray-50'>
             <CategoryBox />
             <ProductListinBoxComponent />
         </div>

@@ -5,7 +5,7 @@ const CategoryBox = () => {
     const categories = ['Extension', 'Mobile Phone Cases', 'Power Bank', 'Headsets', 'Charger And data cable'];
 
     return (
-        <div className='bg-white py-6 p-4 my-2 rounded-md lg:w-2/6 shadow-lg'>
+        <div className='bg-white py-6 p-4 my-3 rounded-md lg:w-2/6 md:w-1/2  shadow-md border border-gray-200 md:mx-1 m-4'>
             <h2 className='text-lg font-semibold my-3'>
                 Product Categories
             </h2>
