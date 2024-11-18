@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 dotenv.config()
-const { SECRET_KEY } = process.env;
+const { JWT_SECRET } = process.env;
 import User from "../models/userSchema.js";
 
 // Cookie options
@@ -36,7 +36,7 @@ const userLogin = async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
 
         // Set token in cookie
         res.cookie('authToken', token, cookieOptions);
@@ -72,7 +72,7 @@ const userSignUp = async (req, res) => {
         await newUser.save();
 
         // Generate JWT token
-        const token = jwt.sign({ id: newUser._id }, SECRET_KEY, { expiresIn: '1h' });
+        const token = jwt.sign({ id: newUser._id }, JWT_SECRET, { expiresIn: '1h' });
 
         // Set token in cookie
         res.cookie('authToken', token, cookieOptions);
