@@ -23,6 +23,16 @@ const userSignUpApi = async (data) => {
     }
 }
 
+const isProtected = async () => {
+    try {
+        const response = await userInstance.get('/is-protected')
+        console.log('isProtected response:', response.data.isAuthenticated)
+        return response.data;
+    } catch (error) {
+        console.log(error.response.data)
+    }
+}
+
 const addToCartApi = async (id) => {
     try {
         const response = await userInstance.get(`/add-to-cart/${id}`);
@@ -35,5 +45,6 @@ const addToCartApi = async (id) => {
 export {
     userLoginApi,
     userSignUpApi,
+    isProtected,
     addToCartApi,
 }

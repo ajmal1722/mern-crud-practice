@@ -84,6 +84,14 @@ const userSignUp = async (req, res) => {
     }
 };
 
+const protectedRoute = async (req, res) => {
+    try {
+        res.status(200).json({ user: req.user, isAuthenticated: true });
+    } catch (error) {
+        res.status(500).json({ error: error.message, isAuthenticated: false })
+    }
+}
+
 // Add to cart
 const addToCart = async (req, res) => {
     try {
@@ -99,5 +107,6 @@ const addToCart = async (req, res) => {
 export {
     userLogin,
     userSignUp,
+    protectedRoute,
     addToCart,
 }
