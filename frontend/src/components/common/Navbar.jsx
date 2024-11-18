@@ -1,4 +1,8 @@
-import React from 'react'
+import { Link } from "react-router-dom";
+import { CiHeart, CiUser } from "react-icons/ci";
+import { GrCart } from "react-icons/gr";
+import WhiteCircleButton from "../reusable/WhiteCircleButton";
+import PurpleCircleButton from "../reusable/PurpleCircleButton";
 
 const Navbar = () => {
     return (
@@ -25,8 +29,12 @@ const Navbar = () => {
                     Stores 
                 </button>
             </div>
-            <div className='bg-blue-200 w-1/2 pr-20'>
-
+            <div className='w-1/2 pr-20 flex justify-end gap-4'>
+            <WhiteCircleButton value={<CiUser />} />
+            <WhiteCircleButton value={<CiHeart />} />
+                <Link to='/cart'>
+                    <PurpleCircleButton value={<GrCart />} />
+                </Link>
             </div>
         </div>
     )
