@@ -1,6 +1,10 @@
-import React from 'react'
+import { addToCartApi } from "../../utils/apis/userApi"
 
 const SingleProduct = ({ product }) => {
+    const addToCart = async () => {
+        const response = await addToCartApi(2)
+    }
+    
     return (
         <div
             className="max-w-sm bg-white rounded-lg shadow-md border border-gray-200 my-10 hover:scale-105 transition duration-300"
@@ -31,7 +35,7 @@ const SingleProduct = ({ product }) => {
                         ₹{product.discountPrice}
                     </p>
                 </div>
-                <button className="w-full bg-purple-900 text-yellow-300 py-2 px-4 rounded-md hover:bg-purple-800 transition">
+                <button onClick={addToCart} className="w-full bg-purple-900 text-yellow-300 py-2 px-4 rounded-md hover:bg-purple-800 transition">
                     Add to Cart
                 </button>
             </div>

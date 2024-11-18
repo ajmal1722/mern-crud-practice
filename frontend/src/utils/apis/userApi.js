@@ -23,7 +23,17 @@ const userSignUpApi = async (data) => {
     }
 }
 
+const addToCartApi = async (id) => {
+    try {
+        const response = await userInstance.get(`/add-to-cart/${id}`);
+        console.log('add to cart response:', response.data)
+    } catch (error) {
+        console.log('Error adding to cart:', error.response)
+    }
+}
+
 export {
     userLoginApi,
     userSignUpApi,
+    addToCartApi,
 }
