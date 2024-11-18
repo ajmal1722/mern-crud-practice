@@ -7,6 +7,7 @@ import AdminNavbar from './components/pages/adminPage/AdminNavbar';
 import LoginPage from './components/pages/authentication/LoginPage';
 import SignUpPage from './components/pages/authentication/SignupPage';
 import ManiLayout from './layout/ManiLayout';
+import CartPage from './components/pages/homePage/CartPage';
 
 function App() {
   // Define routes
@@ -16,12 +17,16 @@ function App() {
       element: <ManiLayout />,
       children: [
         {
+          path: '/',
+          element: <HomePage />,
+          index: true
+        }, 
+        {
           element: <UserAuth />,
           children: [
             {
-              path: '/',
-              element: <HomePage />,
-              index: true
+              path: '/cart',
+              element: <CartPage />
             }
           ]
         }
