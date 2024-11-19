@@ -6,6 +6,7 @@ import cors from 'cors';
 import connectDB from './config/connectDB.js';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
+import adminRouter from './routers/adminRouter.js';
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use(cors(corsOptions)); // Enable CORS using the specified options
 
 // Route handlers
 app.use('/api/user', userRouter);
+app.use('/api/admin', adminRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`)
