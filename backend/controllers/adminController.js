@@ -36,6 +36,37 @@ const adminLogin = async (req, res) => {
     }
 };
 
+const adminSignup = async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+        console.log(req.body)
+
+        const admin = await Admin.findOne({ email });
+        if (admin) {
+            return res.status(409).json({ error: 'Admin already exist' })
+        }
+
+        const hashedPassowrd = await bcrypt.hash(password, 8);
+
+        const newUser = new Admin({
+            name, 
+            email,
+            password: hashedPassowrd
+        })
+        await newUser.save()
+
+        res.status(201).json({ message: 'Admin is created successfully',
+            user: {
+                name, email
+            }
+        })
+    } catch (error) {
+        console.error('Error during admin login:', error);
+        res.status(500).json({ error: 'Something went wrong.' });
+    }
+}
+
 export {
-    adminLogin
+    adminLogin,
+    adminSignup,
 };
