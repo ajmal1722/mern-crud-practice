@@ -8,6 +8,7 @@ import LoginPage from './components/pages/authentication/LoginPage';
 import SignUpPage from './components/pages/authentication/SignupPage';
 import ManiLayout from './layout/ManiLayout';
 import CartPage from './components/pages/homePage/CartPage';
+import AdminLogin from './components/pages/adminPage/AdminLogin';
 
 function App() {
   // Define routes
@@ -57,6 +58,10 @@ function App() {
         </>
       ),
     },
+    {
+      path: '/admin/login',
+      element: <AdminLogin />
+    }
   ]);
 
   return (
