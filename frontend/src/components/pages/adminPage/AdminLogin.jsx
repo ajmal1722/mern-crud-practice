@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { userLoginApi } from '../../../utils/apis/userApi';
+import { adminLoginApi } from '../../../utils/apis/adminApi';
 
 const AdminLogin = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +15,8 @@ const AdminLogin = () => {
     const [userData, setUserData] = useState([]);
 
     const onChange = (e) => {
-        
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value })
     };
 
     // useEffect(() => {
@@ -25,7 +26,12 @@ const AdminLogin = () => {
     // }, []);
 
     const handleSubmit = async (e) => {
-        
+        e.preventDefault()
+        const response = await adminLoginApi(formData);
+
+        if (response) {
+            navigate('/admin')
+        }
     };
 
     return (
