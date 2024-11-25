@@ -1,17 +1,11 @@
 import { useState } from "react"
 
-const Form = ({ handleSubmit, users, setUsers }) => {
-    // const [users, setUsers] = useState({
-    //     name: '',
-    //     dob: '',
-    //     role: '',
-    //     skills: '',
-    // })
+const Form = ({ handleSubmit, userData, setUserData }) => {
     const handleChange = (e) => {
         const { value, name } = e.target;
         // console.log(value, name)
-        setUsers({
-            ...users, [name] : value
+        setUserData({
+            ...userData, [name] : value
         })
     }
     return (
@@ -22,7 +16,7 @@ const Form = ({ handleSubmit, users, setUsers }) => {
                     name='name'
                     className="border rounded-md p-1 px-2 mr-3"
                     placeholder="your name..."
-                    value={users.name}
+                    value={userData.name}
                     onChange={handleChange}
                 /> <br />
                 <div className="border rounded-md p-1 px-2 my-2">
@@ -33,13 +27,13 @@ const Form = ({ handleSubmit, users, setUsers }) => {
                         type="date" 
                         name='dob'
                         className="mx-2"
-                        value={users.dob}
+                        value={userData.dob}
                         onChange={handleChange}
                     />
                 </div>
                 <select 
                     name="role" id="" 
-                    value={users.role}
+                    value={userData.role}
                     className="border rounded-md p-1 px-2 my-2" 
                     onChange={handleChange}
                 >
