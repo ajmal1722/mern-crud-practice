@@ -9,6 +9,7 @@ import SignUpPage from './components/pages/authentication/SignupPage';
 import ManiLayout from './layout/ManiLayout';
 import CartPage from './components/pages/homePage/CartPage';
 import AdminLogin from './components/pages/adminPage/AdminLogin';
+import PracticePage from './components/pages/practice/PracticePage';
 
 function App() {
   // Define routes
@@ -35,19 +36,11 @@ function App() {
     },
     {
       path: '/login',
-      element: (
-        <>
-          <LoginPage />
-        </>
-      ),
+      element: <LoginPage />
     },
     {
       path: '/signup',
-      element: (
-        <>
-          <SignUpPage />
-        </>
-      ),
+      element: <SignUpPage />
     },
     {
       path: '/admin',
@@ -61,6 +54,10 @@ function App() {
     {
       path: '/admin/login',
       element: <AdminLogin />
+    },
+    {
+      path: '/practice',
+      element: <PracticePage />
     }
   ]);
 
