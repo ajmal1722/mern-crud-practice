@@ -1,69 +1,109 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserAuth from './utils/auth/UserAuth';
-import Navbar from './components/common/Navbar';
-import HomePage from './components/pages/homePage/HomePage';
-import AdminPage from './components/pages/adminPage/AdminPage';
-import AdminNavbar from './components/pages/adminPage/AdminNavbar';
-import LoginPage from './components/pages/authentication/LoginPage';
-import SignUpPage from './components/pages/authentication/SignupPage';
 import ManiLayout from './layout/ManiLayout';
-import CartPage from './components/pages/homePage/CartPage';
-import AdminLogin from './components/pages/adminPage/AdminLogin';
-import PracticePage from './components/pages/practice/PracticePage';
+
+const HomePage = lazy(() => import('./components/pages/homePage/HomePage'));
+const CartPage = lazy(() => import('./components/pages/homePage/CartPage'));
+const LoginPage = lazy(() => import('./components/pages/authentication/LoginPage'));
+const SignUpPage = lazy(() => import('./components/pages/authentication/SignupPage'));
+const AdminPage = lazy(() => import('./components/pages/adminPage/AdminPage'));
+const AdminLogin = lazy(() => import('./components/pages/adminPage/AdminLogin'));
+const PracticePage = lazy(() => import('./components/pages/practice/PracticePage'));
+const AdminNavbar = lazy(() => import('./components/pages/adminPage/AdminNavbar'));
 
 function App() {
+  // Loader Component
+  const Loader = () => (
+    <div className="w-full h-screen flex justify-center items-center">
+      Loading...
+    </div>
+  );
+
   // Define routes
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <ManiLayout />,
+      element: (
+        <Suspense fallback={<Loader />}>
+          <ManiLayout />
+        </Suspense>
+      ),
       children: [
         {
           path: '/',
-          element: <HomePage />,
-          index: true
-        }, 
+          element: (
+            <Suspense fallback={<Loader />}>
+              <HomePage />
+            </Suspense>
+          ),
+          index: true,
+        },
         {
-          element: <UserAuth />,
+          element: (
+            <Suspense fallback={<Loader />}>
+              <UserAuth />
+            </Suspense>
+          ),
           children: [
             {
               path: '/cart',
-              element: <CartPage />
-            }
-          ]
-        }
-      ]
+              element: (
+                <Suspense fallback={<Loader />}>
+                  <CartPage />
+                </Suspense>
+              ),
+            },
+          ],
+        },
+      ],
     },
     {
       path: '/login',
-      element: <LoginPage />
+      element: (
+        <Suspense fallback={<Loader />}>
+          <LoginPage />
+        </Suspense>
+      ),
     },
     {
       path: '/signup',
-      element: <SignUpPage />
+      element: (
+        <Suspense fallback={<Loader />}>
+          <SignUpPage />
+        </Suspense>
+      ),
     },
     {
       path: '/admin',
       element: (
-        <>
-          <AdminNavbar />
-          <AdminPage />
-        </>
+        <Suspense fallback={<Loader />}>
+          <>
+            <AdminNavbar />
+            <AdminPage />
+          </>
+        </Suspense>
       ),
     },
     {
       path: '/admin/login',
-      element: <AdminLogin />
+      element: (
+        <Suspense fallback={<Loader />}>
+          <AdminLogin />
+        </Suspense>
+      ),
     },
     {
       path: '/practice',
-      element: <PracticePage />
-    }
+      element: (
+        <Suspense fallback={<Loader />}>
+          <PracticePage />
+        </Suspense>
+      ),
+    },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
