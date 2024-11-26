@@ -1,8 +1,10 @@
-import { useState } from 'react'
-import Form from './Form'
+import { useState } from 'react';
+import Form from './Form';
+import UserListing from './UserListing';
 
 const PracticePage = () => {
     const [userData, setUserData] = useState({
+        id: '',
         name: '',
         dob: '',
         role: 'Teacher',
@@ -20,6 +22,9 @@ const PracticePage = () => {
                 handleSubmit={handleSubmit} 
                 userData={userData}
                 setUserData={setUserData}
+                users={users}
+            />
+            <UserListing 
                 users={users}
             />
         </>
