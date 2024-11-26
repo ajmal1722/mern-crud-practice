@@ -1,6 +1,7 @@
 import { MdOutlineEdit, MdDelete } from "react-icons/md";
 
 const SingleUser = ({ user, deleteUser }) => {
+    console.log('hobbies,,,:', user.hobbies)
     return (
         <div className="border rounded-md shadow-md p-5 m-5 max-w-md mx-auto">
             <div className='flex justify-end'>
@@ -28,7 +29,7 @@ const SingleUser = ({ user, deleteUser }) => {
                 <strong>Role:</strong> {user.role}
             </div>
             <div className="mb-2">
-                <strong>Skills:</strong> {user.skills || "Not provided"}
+                <strong>Hobbies:</strong> {user.hobbies?.map(item =>  <p key={item}>{item}</p>)}
             </div>
         </div>
     );

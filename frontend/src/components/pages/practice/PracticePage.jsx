@@ -8,7 +8,7 @@ const PracticePage = () => {
         name: '',
         dob: '',
         role: 'Teacher',
-        hobbies: '',
+        hobbies: [],
     })
     const [users, setUsers] = useState([]);
 
@@ -17,13 +17,14 @@ const PracticePage = () => {
 
         userData.id = Date.now()
         setUsers(prev => [...prev, userData]);
+        // console.log('hobbies:', userData.hobbies)
 
         setUserData({
             id: '',
             name: '',
             dob: '',
             role: 'Teacher',
-            hobbies: '',
+            hobbies: [],
         })
     }
 
