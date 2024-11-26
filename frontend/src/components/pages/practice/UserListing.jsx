@@ -1,6 +1,6 @@
 import SingleUser from "./SingleUser"
 
-const UserListing = ({ users }) => {
+const UserListing = ({ users, deleteUser }) => {
     return (
         <>
             <h2 className="text-center font-semibold text-2xl">
@@ -12,6 +12,7 @@ const UserListing = ({ users }) => {
                         <SingleUser
                             key={user.id}
                             user={user}
+                            deleteUser={deleteUser}
                         />
                     ))}
                 </div>

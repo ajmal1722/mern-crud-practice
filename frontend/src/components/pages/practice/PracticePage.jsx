@@ -26,6 +26,11 @@ const PracticePage = () => {
             hobbies: '',
         })
     }
+
+    const deleteUser = (id) => {
+        setUsers(users.filter(user => user.id !== id))
+    }
+
     return (
         <>
             <Form 
@@ -36,6 +41,7 @@ const PracticePage = () => {
             />
             <UserListing 
                 users={users}
+                deleteUser={deleteUser}
             />
         </>
     )
