@@ -8,13 +8,23 @@ const PracticePage = () => {
         name: '',
         dob: '',
         role: 'Teacher',
-        skills: '',
+        hobbies: '',
     })
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        userData.id = Date.now()
         setUsers(prev => [...prev, userData]);
+
+        setUserData({
+            id: '',
+            name: '',
+            dob: '',
+            role: 'Teacher',
+            hobbies: '',
+        })
     }
     return (
         <>
