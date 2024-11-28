@@ -67,6 +67,20 @@ const adminSignup = async (req, res) => {
     }
 }
 
+const getProducts = async (req, res) => {
+    try {
+        const products = await Product.find(); // Fetch all products
+
+        // Send a success response
+        res.status(200).json({ products });
+    } catch (error) {
+        console.error('Error during fetching products:', error);
+
+        // Send error response
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const addProduct = async (req, res) => {
     try {
         const data = req.body;
@@ -89,7 +103,7 @@ const deleteProduct = async (req, res) => {
     try {
         const id = req.params.id;
 
-        
+
     } catch (error) {
         console.error('Error during deleting product:', error);
         res.status(500).json({ error: error.message });
@@ -108,6 +122,7 @@ const updateProduct = async (req, res) => {
 export {
     adminLogin,
     adminSignup,
+    getProducts,
     addProduct,
     deleteProduct,
     updateProduct,
