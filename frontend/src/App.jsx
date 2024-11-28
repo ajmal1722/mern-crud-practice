@@ -79,7 +79,6 @@ function App() {
       element: (
         <Suspense fallback={<Loader />}>
           <>
-            <AdminNavbar />
             <AdminPage />
           </>
         </Suspense>
