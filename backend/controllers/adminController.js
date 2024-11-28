@@ -63,13 +63,52 @@ const adminSignup = async (req, res) => {
         })
     } catch (error) {
         console.error('Error during admin login:', error);
-        res.status(500).json({ error: 'Something went wrong.' });
+        res.status(500).json({ error: error.message });
     }
 }
 
+const addProduct = async (req, res) => {
+    try {
+        const data = req.body;
 
+        // Create a new product in the database
+        const product = await Product.create(data);
+
+        // Send a success response
+        res.status(201).json({ 
+            message: 'Product created successfully!', 
+            product 
+        });
+    } catch (error) {
+        console.error('Error during creating product:', error);
+        res.status(500).json({ error: error.message });
+    }
+}
+
+const deleteProduct = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        
+    } catch (error) {
+        console.error('Error during deleting product:', error);
+        res.status(500).json({ error: error.message });
+    }
+}
+
+const updateProduct = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        console.error('Error during updating product:', error);
+        res.status(500).json({ error: error.message });
+    }
+}
 
 export {
     adminLogin,
     adminSignup,
+    addProduct,
+    deleteProduct,
+    updateProduct,
 };
