@@ -32,6 +32,8 @@ const PracticePage = () => {
         setUsers(users.filter(user => user.id !== id))
     }
 
+    // const updateUser = (id, updatedUserData)
+
     return (
         <>
             <Form 

@@ -6,12 +6,12 @@ const SingleUser = ({ user, deleteUser }) => {
         <div className="border rounded-md shadow-md p-5 m-5 max-w-md mx-auto">
             <div className='flex justify-end'>
                 <div className="flex gap-2 mb-4 text-xl">
-                    <MdOutlineEdit 
+                    <MdOutlineEdit
                         className="text-green-600 hover:text-green-700 cursor-pointer"
-                        
+
                     />
-                    <MdDelete 
-                        className="text-red-500 hover:text-red-700 cursor-pointer" 
+                    <MdDelete
+                        className="text-red-500 hover:text-red-700 cursor-pointer"
                         onClick={() => deleteUser(user.id)}
                     />
                 </div>
@@ -29,8 +29,9 @@ const SingleUser = ({ user, deleteUser }) => {
                 <strong>Role:</strong> {user.role}
             </div>
             <div className="mb-2">
-                <strong>Hobbies:</strong> {user.hobbies?.map(item =>  <p key={item}>{item}</p>)}
+                <strong>Hobbies:</strong> {user.hobbies?.join(', ')}
             </div>
+
         </div>
     );
 };
