@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Admin from "../models/adminSchema.js";
+import Product from '../models/productSchema.js';
 
 const adminLogin = async (req, res) => {
     try {
@@ -65,6 +66,8 @@ const adminSignup = async (req, res) => {
         res.status(500).json({ error: 'Something went wrong.' });
     }
 }
+
+
 
 export {
     adminLogin,
