@@ -10,7 +10,7 @@ const SignUpPage = lazy(() => import('./components/pages/authentication/SignupPa
 const AdminPage = lazy(() => import('./components/pages/adminPage/AdminPage'));
 const AdminLogin = lazy(() => import('./components/pages/adminPage/AdminLogin'));
 const PracticePage = lazy(() => import('./components/pages/practice/PracticePage'));
-const AdminNavbar = lazy(() => import('./components/pages/adminPage/AdminNavbar'));
+const AdminProductPage = lazy(() => import('./components/pages/adminPage/AdminProductPage'));
 
 function App() {
   // Loader Component
@@ -83,6 +83,16 @@ function App() {
           </>
         </Suspense>
       ),
+      children: [
+        {
+          path: 'products',
+          element: (
+            <Suspense fallback={<Loader />}>
+              <AdminProductPage />
+            </Suspense>
+          )
+        }
+      ]
     },
     {
       path: '/admin/login',
