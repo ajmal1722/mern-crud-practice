@@ -15,7 +15,7 @@ const AdminPage = () => {
             />
 
             <div className="flex-1 flex flex-col">
-                <AdminNavbar />
+                <AdminNavbar toggleSidebar={toggleSidebar} />
 
                 <div className="p-5 overflow-auto">
                     <Outlet />
